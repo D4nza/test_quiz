@@ -1,0 +1,13 @@
+Package: apache-websocket
+Version: 1.0-1
+Maintainer: Oleg Smelkov <osmelkov@gmail.com>
+Architecture: all
+Section: web
+Depends: bash, git, python, sed
+Description: Apache2 module for handling requests using WebSocket protocol 
+ The apache-websocket module is an Apache 2.x server module that may be used to
+ process requests using the WebSocket protocol (RFC 6455) by an Apache 2.x
+ server. The module consists of a plugin architecture for handling WebSocket
+ messaging. Doing so does _not_ require any knowledge of internal Apache
+ structures.
+

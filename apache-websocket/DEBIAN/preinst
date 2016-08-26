@@ -1,0 +1,13 @@
+#!/bin/bash
+
+git clone https://github.com/disconnect/apache-websocket
+chmod -R 777 apache-websocket
+cd apache-websocket
+grep 'SHLIBSUFFIX=".so"' -P -R -I -l * | xargs sed -i 's/SHLIBSUFFIX=".so"/SHLIBSUFFIX=".elf"/g'
+scons install
+cd examples
+scons install
+cp *.html /var/www/html/
+cd ../..
+rm -rf apache-websocket
+echo 'Done.'

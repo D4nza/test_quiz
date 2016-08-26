@@ -1,0 +1,26 @@
+LoadModule websocket_module   /usr/lib/apache2/modules/mod_websocket.elf
+LoadModule websocket_draft76_module   /usr/lib/apache2/modules/mod_websocket_draft76.elf
+
+<IfModule mod_websocket.c>
+  <Location /echo>
+    SetHandler websocket-handler
+    WebSocketHandler /usr/lib/apache2/modules/mod_websocket_echo.elf echo_init
+  </Location>
+  <Location /dumb_increment>
+    SetHandler websocket-handler
+    WebSocketHandler /usr/lib/apache2/modules/mod_websocket_dumb_increment.elf dumb_increment_init
+  </Location>
+</IfModule>
+
+<IfModule mod_websocket_draft76.c>
+  <Location /echo>
+    SetHandler websocket-handler
+    WebSocketHandler /usr/lib/apache2/modules/mod_websocket_echo.elf echo_init
+    SupportDraft75 On
+  </Location>
+  <Location /dumb_increment>
+    SetHandler websocket-handler
+    WebSocketHandler /usr/lib/apache2/modules/mod_websocket_dumb_increment.elf dumb_increment_init
+    SupportDraft75 On
+  </Location>
+</IfModule>
